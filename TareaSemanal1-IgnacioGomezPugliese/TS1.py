@@ -21,7 +21,27 @@ w0 = 1
 k=10
 Q=20
 
-my_tf = TransferFunction( [1*(w0/Q)*k,0], [1, (w0/Q), w0] )
+R=20
+C=1
+C2=1
+R5=1
+R3=1
+R4=9
+R1=9
+
+ww=20000*np.pi
+wz=1591
+
+R=R*wz
+R5=R5*wz
+R3=R3*wz
+R4=R4*wz
+R1=R1*wz
+C=C*(1/(ww*wz))
+C2=C2*(1/(ww*wz))
+
+#my_tf = TransferFunction( [1*(w0/Q)*k,0], [1, (w0/Q), w0] )
+my_tf = TransferFunction( [(1/(C*R))*((R4/R5)+1),0], [1, (1/(C*R)), R4/(C2*C*R1*R3*R5)] )
 
 
 plt.close('all')
